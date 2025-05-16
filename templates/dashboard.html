@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, {{ user.full_name }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone: {{ user.phone }}</p>
+
+    <h3>Your Certificate</h3>
+    <embed
+      class="dashboard-embed"
+      src="{{ url_for('static', filename='certificates/' + user.certificate_filename) }}"
+      type="application/pdf">
+    <a style="display: block; margin-top: 10px;"
+       href="{{ url_for('download_certificate', filename=user.certificate_filename) }}">
+      Download Your Certificate
+    </a>
+  </div>
+</body>
+</html>
